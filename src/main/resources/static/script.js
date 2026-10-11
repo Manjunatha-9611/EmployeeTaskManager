@@ -1,5 +1,5 @@
 /*employees data fetch api - get*/
-fetch("http://localhost:8080/employees")
+fetch("/employees")
 .then(response=>response.json())
 .then(data=>{
 	
@@ -52,7 +52,7 @@ fetch("http://localhost:8080/employees")
 
 
 /*tasks data fetch api*/
-fetch("http://localhost:8080/tasks")
+fetch("/tasks")
 .then(response=>response.json())
 .then(data => {
 	document.querySelector("#totalTasks").textContent=data.length;
@@ -63,7 +63,7 @@ fetch("http://localhost:8080/tasks")
 
 
 /*tasks data for completed*/
-fetch("http://localhost:8080/tasks/status/completed")
+fetch("/tasks/status/completed")
 .then(response=>response.json())
 .then(data =>{
 	document.querySelector("#completedTasks").textContent=data.length;
@@ -74,7 +74,7 @@ fetch("http://localhost:8080/tasks/status/completed")
 
 
 /*tasks data for pending*/
-fetch("http://localhost:8080/tasks/status/pending")
+fetch("/tasks/status/pending")
 .then(response => response.json())
 .then(data => {
 	document.querySelector("#pendingTasks").textContent = data.length;
@@ -83,7 +83,7 @@ fetch("http://localhost:8080/tasks/status/pending")
 
 
 /*tasks data for in-progress*/
-fetch("http://localhost:8080/tasks/status/in_progress")
+fetch("/tasks/status/in_progress")
 .then(response => response.json())
 .then(data => {
 	document.querySelector("#progressCount").textContent=data.length;
