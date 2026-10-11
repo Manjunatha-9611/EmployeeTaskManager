@@ -5,7 +5,7 @@ let allEmployees = [];
 
 /*Get Employees fetch api*/
 function loadEmployees(){
-	fetch("http://localhost:8080/employees")
+	fetch("/employees")
 	.then(response=>{
 			if(!response.ok){
 				throw new Error("Failed to fecth employees: "+response.status);
@@ -101,7 +101,7 @@ document.querySelector("#employeeForm").addEventListener("submit", function(even
         salary: document.querySelector("#salary").value,
     };
 	
-	let url = "http://localhost:8080/employees";
+	let url = "/employees";
 	let method = "POST";
 	
 	if(editEmployeeId !== null){
@@ -144,7 +144,7 @@ function openDeleteModal(id) {
 
 /*yes delete section*/
 document.querySelector("#confirmDelete").addEventListener("click", function() {
-    fetch(`http://localhost:8080/employees/${employeeToDelete}`, {
+    fetch(`/employees/${employeeToDelete}`, {
         method: "DELETE"
     })
         .then(response => response.text())
@@ -183,7 +183,7 @@ function editEmployee(id){
 	
 	editEmployeeId = id;
 	
-	fetch(`http://localhost:8080/employees/${id}`)
+	fetch(`/employees/${id}`)
 	.then(response => response.json())
 	.then(employee => {
 		document.querySelector("#name").value = employee.name;
