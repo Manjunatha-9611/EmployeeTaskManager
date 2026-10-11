@@ -204,7 +204,7 @@ function showMessage(title,message){
 
 document.querySelector("#messageOk").addEventListener("click",function(){
 	document.querySelector("#messageModal").style.display="none";
-	location.reload();
+	//location.reload();
 });
 
 
