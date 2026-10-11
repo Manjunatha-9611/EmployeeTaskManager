@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Task Manager</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="dashboard">
+		<aside class="sidebar">
+			<h2 class="logo">ETM</h2>
+			<nav>
+				<a href="index.html" class="active">Dashboard</a> <a href="employees.html">Employees</a>
+				<a href="tasks.html">Task</a>
+			</nav>
+		</aside>
+
+		<main class="main-content">
+			<header class="topbar">
+				<div>
+					<h1>Dashboard</h1>
+					<p>Employee Task Manager</p>
+				</div>
+				<div class="profile">
+					<div class="profile-circle">B</div>
+					<div>
+						<strong>Admin</strong> <small>Manager</small>
+					</div>
+				</div>
+			</header>
+
+			<section class="stats">
+				<div class="card">
+					<p>Total Employees</p>
+					<h2 id="totalEmployees">0</h2>
+					<span>Employees</span>
+				</div>
+
+				<div class="card">
+					<p>Total Tasks</p>
+					<h2 id="totalTasks">0</h2>
+					<span>Assigned tasks</span>
+				</div>
+
+				<div class="card">
+					<p>Completed</p>
+					<h2 id="completedTasks">0</h2>
+					<span>Completed Tasks</span>
+				</div>
+				<div class="card">
+					<p>Pending</p>
+					<h2 id="pendingTasks">0</h2>
+					<span>Pending tasks</span>
+				</div>
+			</section>
+
+
+			<section class="dashboard-grid">
+				<div class="panel large-panel">
+					<div class="panel-header">
+						<h2>Employee Statistics</h2>
+						<span>Monthly</span>
+					</div>
+					<div class="chart-placeholder" id="employeeChart"></div>
+				</div>
+
+				<div class="panel">
+					<div class="panel-header">
+						<h2>Task status</h2>
+					</div>
+
+					<div class="status-item">
+						<span class="status pending"></span>Pending<strong
+							id="pendingCount">0</strong>
+					</div>
+
+					<div class="status-item">
+						<span class="status progress"></span>In Progress<strong
+							id="progressCount">0</strong>
+					</div>
+					<div class="status-item">
+						<span class="status completed"></span>Completed<strong
+							id="completedCount">0</strong>
+					</div>
+				</div>
+			</section>
+
+			<section class="panel recent">
+				<div class="panel-header">
+					<h2>Recent Employees</h2>
+					<a href="employees.html">View All-></a>
+				</div>
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Department</th>
+						</tr>
+					</thead>
+					<tbody id="employeeTableBody">
+
+					</tbody>
+				</table>
+			</section>
+		</main>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
