@@ -5,7 +5,7 @@ let allTasks = [];
 /*Load employees into dropdown*/
 function loadEmployees() {
     /*console.log("called loadEmp")*/
-    fetch("http://localhost:8080/employees")
+    fetch("/employees")
         .then(response => {
             console.log(response.status);
             return response.json()
@@ -26,16 +26,16 @@ function loadEmployees() {
 /*Load and display all tasks*/
 function loadTasks() {
     /*console.log("called loadtasks")*/
-    fetch("http://localhost:8080/tasks")
+    fetch("/tasks")
         .then(response => {
-            console.log("Tasks API status:", response.status);
+            // console.log("Tasks API status:", response.status);
             return response.json();
         })
         .then(data => {
             /* console.log("Tasks received:", data);*/
 
             allTasks = data;
-			console.log("Tasks loaded:", allTasks.length);
+			/*console.log("Tasks loaded:", allTasks.length);*/
             renderTasks();
         }).catch(err => console.log("Error :", err))
 }
@@ -84,11 +84,11 @@ document.querySelector("#taskForm").addEventListener("submit", function(event) {
         employeeId: document.querySelector("#employeeId").value,
     };
 
-    let url = "http://localhost:8080/tasks";
+    let url = "/tasks";
     let method = "POST";
 
     if (editTaskId != null) {
-        url = `http://localhost:8080/tasks/${editTaskId}`;
+        url = `/tasks/${editTaskId}`;
         method = "PUT";
     }
     fetch(url, {
@@ -123,7 +123,7 @@ document.querySelector("#taskForm").addEventListener("submit", function(event) {
 
 /*Load a task into the form for editting*/
 function editTask(id) {
-    fetch(`http://localhost:8080/tasks/${id}`)
+    fetch(`/tasks/${id}`)
         .then(response => response.json())
         .then(task => {
             editTaskId = id;
@@ -171,7 +171,7 @@ function changeStatus(id, currentStatus) {
         return;
     }
 
-    fetch(`http://localhost:8080/tasks/${id}/status`, {
+    fetch(`/tasks/${id}/status`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"
@@ -181,8 +181,8 @@ function changeStatus(id, currentStatus) {
         .then(async response => {
             const responseText = await response.text();
 
-            console.log("HTTP status:", response.status);
-            console.log("Response body:", responseText);
+            // console.log("HTTP status:", response.status);
+            // console.log("Response body:", responseText);
 
             if (!response.ok) {
                 throw new Error(responseText || "Could not update task status.");
@@ -229,14 +229,14 @@ function deleteTask(id) {
 
         isDeleting = true;
         const id = taskToDelete;
-        fetch(`http://localhost:8080/tasks/${id}`, {
+        fetch(`/tasks/${id}`, {
             method: "DELETE"
         })
             .then(async response => {
                 const message = await response.text();
 
-                console.log("Delete HTTP status:", response.status);
-                console.log("Delete response:", message);
+                // console.log("Delete HTTP status:", response.status);
+                // console.log("Delete response:", message);
 
                 if (!response.ok) {
                     throw new Error(message || "Could not delete task.");
