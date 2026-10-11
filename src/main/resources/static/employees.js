@@ -105,7 +105,7 @@ document.querySelector("#employeeForm").addEventListener("submit", function(even
 	let method = "POST";
 	
 	if(editEmployeeId !== null){
-		url = `http://localhost:8080/employees/${editEmployeeId}`;
+		url = `/employees/${editEmployeeId}`;
 		method="PUT";
 	}
 
